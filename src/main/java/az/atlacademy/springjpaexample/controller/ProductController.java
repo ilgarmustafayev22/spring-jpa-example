@@ -33,8 +33,8 @@ public class ProductController {
     }
 
     @GetMapping("/findByName/{name}")
-    public Product findProductByName(@NotBlank @PathVariable String name) {
-        return productService.getProductByName(name);
+    public ResponseEntity<Product> findProductByName(@NotBlank @PathVariable String name) {
+        return ResponseEntity.ok(productService.getProductByName(name));
     }
 
     @PutMapping("/update")
