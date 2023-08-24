@@ -1,17 +1,21 @@
-package az.atlacademy.springjpaexample.model;
+package az.atlacademy.springjpaexample.dao.entity;
 
+import az.atlacademy.springjpaexample.model.enums.ProductEnum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import java.math.BigDecimal;
 
 @Data
 @Entity
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "products")
-public class Product {
+public class ProductEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,10 +24,10 @@ public class Product {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "category")
-    private String category;
-
     @Column(name = "price")
     private BigDecimal price;
+
+    @Enumerated(value = EnumType.STRING)
+    private ProductEnum category;
 
 }
